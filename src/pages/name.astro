@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="¡Agrega tu nombre!">
+  <main class="flex flex-col justify-center items-center gap-y-2 h-screen px-4">
+    <h1
+      class="text-[36px] leading-[3rem] font-medium text-DarkBlue text-center
+      md:text-5xl md:max-w-[560px]"
+    >
+      Escribe tu nombre
+    </h1>
+    <span class="md:max-w-[560px] text-gray">
+      Tip: Funciona mejor con un nombre corto de 4 o 5 letras
+    </span>
+
+    <form class="flex flex-col justify-center items-center gap-y-4 mt-8 w-full">
+      <input
+        type="text"
+        id="inputName"
+        name="name"
+        required
+        placeholder="Tu nombre"
+        class="rounded px-4 py-2 w-full md:w-[400px]
+        bg-transparent outline outline-[1.5px] outline-DarkBlue
+        focus:outline-[3px] text-DarkBlue"
+      />
+
+      <img
+        id="imageWithText"
+        src="/poster3.png"
+        alt="Index"
+        class="w-52 h-60 rounded mb-4"
+      />
+
+      <button
+        id="downloadBtn"
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300
+    font-medium rounded-lg text-lg py-2.5 focus:outline-none md:max-w-[400px] w-full text-center"
+        >Descargar
+      </button>
+    </form>
+  </main>
+</Layout>
+
+<script>
+  const downloadBtn = document.getElementById("downloadBtn");
+  const imageWithText = document.getElementById("imageWithText");
+
+  if (downloadBtn)
+    downloadBtn.addEventListener("click", () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      // Configurar el tamaño del lienzo para que coincida con el tamaño de la imagen
+      if (imageWithText) {
+        canvas.width = imageWithText.offsetWidth;
+        canvas.height = imageWithText.offsetHeight;
+      }
+
+      // Dibujar la imagen en el lienzo
+      ctx.drawImage(imageWithText, 0, 0);
+
+      // Obtener la posición y el tamaño del texto superpuesto
+      const textSpan = document.querySelector(".absolute");
+      const textRect = textSpan.getBoundingClientRect();
+
+      // Dibujar el texto en el lienzo
+      ctx.fillStyle = window.getComputedStyle(textSpan).color;
+      ctx.font = window.getComputedStyle(textSpan).font;
+      ctx.fillText(
+        textSpan.textContent,
+        textRect.left,
+        textRect.top + textRect.height
+      );
+
+      // Convertir el lienzo a una URL de datos
+      const dataURL = canvas.toDataURL("image/png");
+
+      // Crear un enlace temporal y descargar la imagen
+      const link = document.createElement("a");
+      link.download = "imagen_con_texto.png";
+      link.href = dataURL;
+      link.click();
+    });
+</script>
