@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="¡Agrega tu nombre!">
   <main class="flex flex-col justify-center items-center gap-y-2 h-screen px-4">
     <h1
-      class="text-[36px] leading-[3rem] font-medium text-DarkBlue text-center
+      class="text-[36px] leading-[3rem] font-bold text-DarkBlue text-center
       md:text-5xl md:max-w-[560px]"
     >
       Escribe tu nombre
@@ -28,18 +28,120 @@ import Layout from "../layouts/Layout.astro";
 
       <img
         id="imageWithText"
-        src="/poster3.png"
+        src="/Benjamin.png"
         alt="Index"
-        class="w-52 h-60 rounded mb-4"
+        class="w-52 h-60 rounded-md mb-4"
       />
 
       <button
         id="downloadBtn"
-        type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300
+        type="button"
+        class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-300
     font-medium rounded-lg text-lg py-2.5 focus:outline-none md:max-w-[400px] w-full text-center"
         >Descargar
       </button>
+
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?u=https://elecciones-2024.vercel.app/"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300
+    font-medium rounded-lg text-lg py-2.5 focus:outline-none md:max-w-[400px] w-full text-center cursor-pointer"
+        >Compartir
+      </a>
     </form>
   </main>
 </Layout>
+
+<script type="module">
+  var downloadBtn = document.getElementById("downloadBtn");
+  var inputName = document.getElementById("inputName");
+
+  inputName.addEventListener("input", () => {
+    var texto = document.getElementById("inputName").value.toUpperCase();
+
+    var canvas = document.createElement("canvas");
+    canvas.width = 900; // Ancho de la imagen
+    canvas.height = 1000; // Alto de la imagen
+    var ctx = canvas.getContext("2d");
+
+    // Cargar la imagen predefinida
+    var img = new Image();
+    img.src = "/Benjamin.png"; // Ruta de la imagen
+
+    img.onload = function () {
+      // Dibujar la imagen en el canvas
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Configurar el estilo del texto
+      if (texto.length > 7) {
+        ctx.font = "bold 150px Georgia";
+      } else if (texto.length > 5) {
+        ctx.font = "bold 175px Georgia";
+      } else {
+        ctx.font = "bold 220px Georgia";
+      }
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+
+      // Agregar el texto al canvas
+      ctx.fillText(texto, canvas.width / 2, canvas.height / 2);
+
+      // Convertir el canvas a una imagen y mostrarla
+      var imgWithText = canvas.toDataURL("image/png");
+      document.getElementById("imageWithText").src = imgWithText;
+    };
+  });
+
+  downloadBtn.addEventListener("click", async () => {
+    var texto = document.getElementById("inputName").value;
+
+    // Validar el texto
+    if (texto.trim() === "") {
+      alert("El nombre no puede estar vacío.");
+      return;
+    } else if (texto.length > 8) {
+      alert("El nombre no puede tener más de 8 caracteres.");
+      return;
+    }
+
+    var canvas = document.createElement("canvas");
+    canvas.width = 900; // Ancho de la imagen
+    canvas.height = 1000; // Alto de la imagen
+    var ctx = canvas.getContext("2d");
+
+    // Cargar la imagen predefinida
+    var img = new Image();
+    img.src = "/Benjamin.png"; // Ruta de la imagen
+
+    img.onload = function () {
+      // Dibujar la imagen en el canvas
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Obtener el texto ingresado por el usuario
+      var texto = document.getElementById("inputName").value.toUpperCase();
+
+      // Configurar el estilo del texto
+      if (texto.length > 7) {
+        ctx.font = "bold 150px Georgia";
+      } else if (texto.length > 5) {
+        ctx.font = "bold 175px Georgia";
+      } else {
+        ctx.font = "bold 220px Georgia";
+      }
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+
+      // Agregar el texto al canvas
+      ctx.fillText(texto, canvas.width / 2, canvas.height / 2);
+
+      // Convertir el canvas a una imagen y mostrarla
+      var imgWithText = canvas.toDataURL("image/png");
+      document.getElementById("imageWithText").src = imgWithText;
+
+      // Descargar la imagen con texto
+      var anchor = document.createElement("a");
+      anchor.href = imgWithText;
+      anchor.download = "mi_apoyo_benjamin.png";
+      anchor.click();
+    };
+  });
+</script>
