@@ -14,13 +14,14 @@ import Layout from "../layouts/Layout.astro";
       Tip: Funciona mejor con un nombre corto de 4 o 5 letras
     </span>
 
-    <form class="flex flex-col justify-center items-center gap-y-4 mt-8 w-full">
+    <form class="flex flex-col justify-center items-center gap-y-4 mt-2 w-full">
       <input
         type="text"
         id="inputName"
         name="name"
         required
         placeholder="Tu nombre"
+        maxlength="8"
         class="rounded px-4 py-2 w-full md:w-[400px]
         bg-transparent outline outline-[1.5px] outline-DarkBlue
         focus:outline-[3px] text-DarkBlue"
@@ -79,7 +80,7 @@ import Layout from "../layouts/Layout.astro";
       } else {
         ctx.font = "bold 220px Georgia";
       }
-      ctx.fillStyle = "white";
+      ctx.fillStyle = "black";
       ctx.textAlign = "center";
 
       // Agregar el texto al canvas
@@ -127,7 +128,7 @@ import Layout from "../layouts/Layout.astro";
       } else {
         ctx.font = "bold 220px Georgia";
       }
-      ctx.fillStyle = "white";
+      ctx.fillStyle = "black";
       ctx.textAlign = "center";
 
       // Agregar el texto al canvas
