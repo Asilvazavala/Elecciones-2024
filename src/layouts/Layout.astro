@@ -27,14 +27,16 @@ const { title } = Astro.props;
     >
       <div
         class="absolute bottom-0 left-0 right-0 top-0
-			bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"
+        bg-[radial-gradient(circle_300px_at_50%_200px,#C9EBFF,transparent)]
+			lg:bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"
       >
       </div>
     </div>
     <slot />
-  </body><style is:global>
-    body {
-      font-family: "Inter Variable", sans-serif;
-    }
-  </style>
+    <style is:global>
+      body {
+        font-family: "Inter Variable", sans-serif;
+      }
+    </style>
+  </body>
 </html>
