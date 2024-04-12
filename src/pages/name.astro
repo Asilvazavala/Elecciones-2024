@@ -73,23 +73,29 @@ import Layout from "../layouts/Layout.astro";
     img.onload = function () {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-      // Agregar el texto al canvas
-      ctx.fillText(texto, canvas.width / 2, canvas.height / 2);
+      ctx.save();
+
+      // Inclinar el texto hacia arriba 10 grados
+      ctx.rotate((-3 * Math.PI) / 180);
+
+      // Dibujar el texto en el lienzo
+      if (texto.length > 7) {
+        ctx.font = "bold 150px Georgia";
+      } else if (texto.length > 5) {
+        ctx.font = "bold 175px Georgia";
+      } else {
+        ctx.font = "bold 220px Georgia";
+      }
+      ctx.fillStyle = "black";
+      ctx.textAlign = "center";
+      ctx.fillText(texto, canvas.width / 2 - 25, canvas.height / 2);
+
+      ctx.restore(); // Restaurar el estado del contexto después de la rotación
 
       // Convertir el canvas a una imagen y mostrarla
       var imgWithText = canvas.toDataURL("image/png");
       document.getElementById("imageWithText").src = imgWithText;
     };
-
-    if (texto.length > 7) {
-      ctx.font = "bold 150px Georgia";
-    } else if (texto.length > 5) {
-      ctx.font = "bold 175px Georgia";
-    } else {
-      ctx.font = "bold 220px Georgia";
-    }
-    ctx.fillStyle = "black";
-    ctx.textAlign = "center";
   }
 
   inputName.addEventListener("input", () => {
@@ -116,6 +122,12 @@ import Layout from "../layouts/Layout.astro";
     img.onload = function () {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
+      ctx.save();
+
+      // Inclinar el texto hacia arriba 10 grados
+      ctx.rotate((-3 * Math.PI) / 180);
+
+      // Configurar el estilo del texto inclinado
       if (texto.length > 7) {
         ctx.font = "bold 150px Georgia";
       } else if (texto.length > 5) {
@@ -126,8 +138,10 @@ import Layout from "../layouts/Layout.astro";
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
 
-      // Agregar el texto al canvas
-      ctx.fillText(texto, canvas.width / 2, canvas.height / 2);
+      // Dibujar el texto inclinado en el lienzo
+      ctx.fillText(texto, canvas.width / 2 - 25, canvas.height / 2);
+
+      ctx.restore(); // Restaurar el estado del contexto después de la rotación
 
       // Convertir el canvas a una imagen y mostrarla
       var imgWithText = canvas.toDataURL("image/png");
