@@ -58,22 +58,10 @@ import Layout from "../layouts/Layout.astro";
   var downloadBtn = document.getElementById("downloadBtn");
   var inputName = document.getElementById("inputName");
 
-  function validateName() {
-    var texto = document.getElementById("inputName").value;
-
-    if (texto.trim() === "") {
-      alert("El nombre no puede estar vacío.");
-      return;
-    } else if (texto.length > 8) {
-      alert("El nombre no puede tener más de 8 caracteres.");
-      return;
-    }
-  }
-
-  inputName.addEventListener("input", () => {
+  function getCanvas() {
     var texto = document.getElementById("inputName").value.toUpperCase();
-
     var canvas = document.createElement("canvas");
+
     canvas.width = 900; // Ancho de la imagen
     canvas.height = 1000; // Alto de la imagen
     var ctx = canvas.getContext("2d");
@@ -83,19 +71,7 @@ import Layout from "../layouts/Layout.astro";
     img.src = "/Benjamin.png"; // Ruta de la imagen
 
     img.onload = function () {
-      // Dibujar la imagen en el canvas
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-      // Configurar el estilo del texto
-      if (texto.length > 7) {
-        ctx.font = "bold 150px Georgia";
-      } else if (texto.length > 5) {
-        ctx.font = "bold 175px Georgia";
-      } else {
-        ctx.font = "bold 220px Georgia";
-      }
-      ctx.fillStyle = "black";
-      ctx.textAlign = "center";
 
       // Agregar el texto al canvas
       ctx.fillText(texto, canvas.width / 2, canvas.height / 2);
@@ -104,10 +80,31 @@ import Layout from "../layouts/Layout.astro";
       var imgWithText = canvas.toDataURL("image/png");
       document.getElementById("imageWithText").src = imgWithText;
     };
+
+    if (texto.length > 7) {
+      ctx.font = "bold 150px Georgia";
+    } else if (texto.length > 5) {
+      ctx.font = "bold 175px Georgia";
+    } else {
+      ctx.font = "bold 220px Georgia";
+    }
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+  }
+
+  inputName.addEventListener("input", () => {
+    getCanvas();
   });
 
   downloadBtn.addEventListener("click", async () => {
     var canvas = document.createElement("canvas");
+    var texto = document.getElementById("inputName").value.toUpperCase();
+
+    if (texto.length === 0) {
+      alert("El nombre no puede estar vacío");
+      return;
+    }
+
     canvas.width = 900; // Ancho de la imagen
     canvas.height = 1000; // Alto de la imagen
     var ctx = canvas.getContext("2d");
@@ -117,13 +114,8 @@ import Layout from "../layouts/Layout.astro";
     img.src = "/Benjamin.png"; // Ruta de la imagen
 
     img.onload = function () {
-      // Dibujar la imagen en el canvas
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-      // Obtener el texto ingresado por el usuario
-      var texto = document.getElementById("inputName").value.toUpperCase();
-
-      // Configurar el estilo del texto
       if (texto.length > 7) {
         ctx.font = "bold 150px Georgia";
       } else if (texto.length > 5) {
