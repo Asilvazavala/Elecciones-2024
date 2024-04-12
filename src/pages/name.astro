@@ -58,6 +58,18 @@ import Layout from "../layouts/Layout.astro";
   var downloadBtn = document.getElementById("downloadBtn");
   var inputName = document.getElementById("inputName");
 
+  function validateName() {
+    var texto = document.getElementById("inputName").value;
+
+    if (texto.trim() === "") {
+      alert("El nombre no puede estar vacío.");
+      return;
+    } else if (texto.length > 8) {
+      alert("El nombre no puede tener más de 8 caracteres.");
+      return;
+    }
+  }
+
   inputName.addEventListener("input", () => {
     var texto = document.getElementById("inputName").value.toUpperCase();
 
@@ -95,17 +107,6 @@ import Layout from "../layouts/Layout.astro";
   });
 
   downloadBtn.addEventListener("click", async () => {
-    var texto = document.getElementById("inputName").value;
-
-    // Validar el texto
-    if (texto.trim() === "") {
-      alert("El nombre no puede estar vacío.");
-      return;
-    } else if (texto.length > 8) {
-      alert("El nombre no puede tener más de 8 caracteres.");
-      return;
-    }
-
     var canvas = document.createElement("canvas");
     canvas.width = 900; // Ancho de la imagen
     canvas.height = 1000; // Alto de la imagen
