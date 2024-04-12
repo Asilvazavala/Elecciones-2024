@@ -30,7 +30,7 @@ import Layout from "../layouts/Layout.astro";
       <img
         id="imageWithText"
         src="/Benjamin.webp"
-        alt="Index"
+        alt="Poster Benjamin Rico"
         class="w-52 h-60 rounded-md mb-4"
       />
 
@@ -76,7 +76,7 @@ import Layout from "../layouts/Layout.astro";
       ctx.save();
 
       // Inclinar el texto hacia arriba 10 grados
-      ctx.rotate((-3 * Math.PI) / 180);
+      ctx.rotate((-7 * Math.PI) / 180);
 
       // Dibujar el texto en el lienzo
       if (texto.length > 7) {
@@ -88,7 +88,7 @@ import Layout from "../layouts/Layout.astro";
       }
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
-      ctx.fillText(texto, canvas.width / 2 - 25, canvas.height / 2);
+      ctx.fillText(texto, canvas.width / 2 - 50, canvas.height / 2);
 
       ctx.restore(); // Restaurar el estado del contexto después de la rotación
 
@@ -125,7 +125,7 @@ import Layout from "../layouts/Layout.astro";
       ctx.save();
 
       // Inclinar el texto hacia arriba 10 grados
-      ctx.rotate((-3 * Math.PI) / 180);
+      ctx.rotate((-7 * Math.PI) / 180);
 
       // Configurar el estilo del texto inclinado
       if (texto.length > 7) {
@@ -139,7 +139,7 @@ import Layout from "../layouts/Layout.astro";
       ctx.textAlign = "center";
 
       // Dibujar el texto inclinado en el lienzo
-      ctx.fillText(texto, canvas.width / 2 - 25, canvas.height / 2);
+      ctx.fillText(texto, canvas.width / 2 - 50, canvas.height / 2);
 
       ctx.restore(); // Restaurar el estado del contexto después de la rotación
 
