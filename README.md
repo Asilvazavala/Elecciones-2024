@@ -1,44 +1,20 @@
-# Astro Starter Kit: Basics
+# Acerca de Elecciones 2024
+
+Proyecto creado para que los simpatizantes del candidato Benjamín Rico del partido PAN para las elecciones municipales de Valle de Santiago, Guanajuato en el periodo 2024-2027, puedan mostar su apoyo agregando su nombre a una imagen para difundirla en redes sociales.
+
+Tecnologías: Astro, TypeScript & TailwindCSS.
+
+👉 Ve el proyecto aquí: [Elecciones 2024](https://elecciones-2024.vercel.app/)
+
+## 🧞 Comandos básicos
+
+Proyecto creado con:
 
 ```sh
-npm create astro@latest -- --template basics
+npm create astro@latest -- --template basics --tailwind --typescript
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+Todos los comandos son ejecutados en la raíz del proyecto, desde la terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -49,6 +25,20 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 👀 Comandos de las dependencias
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Command                                  | Action              |
+| :--------------------------------------- | :------------------ |
+| `npm install @fontsource-variable/inter` | Installs font inter |
+
+Instalar todas las dependencias:
+
+```sh
+npm install @fontsource-variable/inter
+```
+
+## 🎆 Imágenes del proyecto
+
+![logo](https://github.com/Asilvazavala/Elecciones-2024/blob/1bd11463a369434a8ba764ab99f587dca2ce2408/public/Benjamin.png)
+
+![logo](https://github.com/Asilvazavala/Elecciones-2024/blob/1bd11463a369434a8ba764ab99f587dca2ce2408/public/logo_PAN.png)
