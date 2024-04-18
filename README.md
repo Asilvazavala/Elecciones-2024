@@ -1,6 +1,6 @@
 # Acerca de Elecciones 2024
 
-Proyecto creado para que los simpatizantes del candidato Benjamín Rico del partido PAN para las elecciones municipales de Valle de Santiago, Guanajuato en el periodo 2024-2027, puedan mostar su apoyo agregando su nombre a una imagen para difundirla en redes sociales.
+Proyecto creado para que los simpatizantes del candidato Benjamín Rico del partido PAN para las elecciones municipales de Valle de Santiago, Guanajuato en el periodo 2024-2027, puedan mostrar su apoyo agregando su nombre a una imagen para difundirla en redes sociales.
 
 Tecnologías: Astro, TypeScript & TailwindCSS.
 
